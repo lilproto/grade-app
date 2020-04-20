@@ -1,6 +1,6 @@
 # GradeApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1. After cloning the app run `npm i` to download the dependencies using NPM via Node. (Make sure you have the latest version of Node installed)
 
 ## Development server
 
