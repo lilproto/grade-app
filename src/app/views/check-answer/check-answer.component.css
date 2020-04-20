@@ -1,0 +1,41 @@
+.check-answer-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+mat-form-field,
+input {
+  margin: 1rem;
+}
+
+mat-form-field {
+  margin-bottom: 2rem;
+}
+
+.control-buttons {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.check-answer-button {
+  margin-right: .5rem;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+.answer-message {
+  font-weight: bold;
+  text-align: center;
+  padding-top: 1rem;
+  height: 2rem;
+}
+
+mat-card-actions button {
+  margin-bottom: 1rem;
+}

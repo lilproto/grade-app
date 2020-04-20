@@ -1,0 +1,22 @@
+.welcome-card {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.welcome-header-image {
+  background-image: url('../../../assets/teacher.png');
+  background-size: cover;
+}
+
+.welcome-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.welcome-image img {
+  width: 100%;
+}
+
+mat-card-actions button {
+  margin-bottom: 1rem;
+}

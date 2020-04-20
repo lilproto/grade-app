@@ -1,0 +1,35 @@
+<mat-card class="check-answer-card">
+  <mat-card-header>
+    <mat-card-title>Check Temperature Conversion Answers</mat-card-title>
+    <mat-card-subtitle>Enter starting Units and Values and target Units and Values:</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="answer-message"><span *ngIf="answerChecked" [ngStyle]="{color: answerCheckColor}">{{ answerCheckMessage }}</span></div>
+    <form [formGroup]="form" (submit)="onCheckAnswer()" #answerForm>
+      <mat-form-field>
+        <input matInput type="text" formControlName="inputValue" placeholder="Input Value">
+        <mat-error *ngIf="form.get('inputValue').invalid">Please enter a numeric input value.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="inputUnit" placeholder="Input Unit">
+        <mat-error *ngIf="form.get('inputUnit').invalid">Please enter a valid input Unit.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="targetUnit" placeholder="Target Unit">
+        <mat-error *ngIf="form.get('targetUnit').invalid">Please enter a valid target unit.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="text" formControlName="targetValue" placeholder="Student Response">
+        <mat-error *ngIf="form.get('targetValue').invalid">Please enter a numeric target value.</mat-error>
+      </mat-form-field>
+      <div class="control-buttons">
+        <button class="check-answer-button" mat-raised-button color="primary" type="submit" [ngStyle]="{backgroundColor: answerCheckColor}">Check Answer</button>
+        <span class="spacer"></span>
+        <button class="clear-button" mat-stroked-button color="warn" type="reset" (click)="form.reset()">Clear Form</button>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="accent" routerLink="/">Back to Welcome</button>
+  </mat-card-actions>
+</mat-card>
