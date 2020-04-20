@@ -3,9 +3,8 @@
   margin: 0 auto;
 }
 
-mat-form-field,
-input {
-  margin: 1rem;
+mat-form-field {
+  margin: 0 1rem;
 }
 
 mat-form-field {

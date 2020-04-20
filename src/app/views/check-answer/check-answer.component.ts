@@ -26,12 +26,14 @@ export class CheckAnswerComponent implements OnInit {
       inputValue: new FormControl(null, {
         validators: [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]
       }),
-      inputUnit: new FormControl(null, { validators: [Validators.required, UnitValidator] }),
+      inputUnit: new FormControl(null, {
+        validators: [Validators.required, UnitValidator]
+      }),
       targetValue: new FormControl(null, {
-        validators: [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')],
+        validators: [Validators.required, Validators.pattern('^-?[0-9]\\d*(\\.\\d{1,2})?$')]
       }),
       targetUnit: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [Validators.required, UnitValidator]
       })
     });
 
@@ -59,18 +61,19 @@ export class CheckAnswerComponent implements OnInit {
 
   answersValid():boolean {
     const inputValue = Math.round(this.form.controls.inputValue.value * 10) / 10;
+    const inputUnit = this.form.controls.inputUnit.value;
     const targetValue = Math.round(this.form.controls.targetValue.value * 10) / 10;
     const targetUnit = this.form.controls.targetUnit.value;
 
     if(this.form.invalid) {
       return false;
     }
-    switch(this.form.controls.inputUnit.value) {
+    switch(inputUnit) {
       case 'Fahrenheit':
         if(!['Kelvin','Rankine','Celcius'].includes(targetUnit)) {
           return false;
         }
-        switch(this.form.controls.targetUnit.value) {
+        switch(targetUnit) {
           case 'Kelvin':
             // (32°F − 32) × 5/9 + 273.15 = 273.15K
             this.answerValue = Math.round((((inputValue - 32) / 1.8) + 273.15) * 10) / 10;
@@ -89,7 +92,7 @@ export class CheckAnswerComponent implements OnInit {
         if(!['Fahrenheit','Rankine','Celcius'].includes(targetUnit)) {
           return false;
         }
-        switch(this.form.controls.targetUnit.value) {
+        switch(targetUnit) {
           case 'Fahrenheit':
             // (0K − 273.15) × 9/5 + 32 = -459.7°F
             this.answerValue = Math.round((((inputValue - 273.15) * (9/5)) + 32) * 10) / 10;
@@ -108,7 +111,7 @@ export class CheckAnswerComponent implements OnInit {
         if(!['Kelvin', 'Fahrenheit','Celcius'].includes(targetUnit)) {
           return false;
         }
-        switch(this.form.controls.targetUnit.value) {
+        switch(targetUnit) {
           case 'Kelvin':
             // 1°R × 5/9 = 0.5556K
             this.answerValue = Math.round((inputValue * (5/9)) * 10) / 10;
@@ -127,7 +130,7 @@ export class CheckAnswerComponent implements OnInit {
         if(!['Kelvin', 'Rankine', 'Fahrenheit'].includes(targetUnit)) {
           return false;
         }
-        switch(this.form.controls.targetUnit.value) {
+        switch(targetUnit) {
           case 'Kelvin':
             // 0°C + 273.15 = 273.15K
             this.answerValue = Math.round((inputValue + 273.15) * 10) / 10;
@@ -146,7 +149,7 @@ export class CheckAnswerComponent implements OnInit {
         if(!['gallons', 'liters'].includes(targetUnit)) {
           return false;
         }
-        switch(this.form.controls.targetUnit.value) {
+        switch(targetUnit) {
           case 'gallons':
             // divide the volume value by 16
             this.answerValue = Math.round((inputValue / 16) * 10) / 10;
@@ -161,7 +164,7 @@ export class CheckAnswerComponent implements OnInit {
         if(!['cups', 'liters'].includes(targetUnit)) {
           return false;
         }
-        switch(this.form.controls.targetUnit.value) {
+        switch(targetUnit) {
           case 'cups':
             // multiply the volume value by 16
             this.answerValue = Math.round((inputValue * 16) * 10) / 10;
@@ -176,7 +179,7 @@ export class CheckAnswerComponent implements OnInit {
         if(!['cups', 'gallons'].includes(targetUnit)) {
           return false;
         }
-        switch(this.form.controls.targetUnit.value) {
+        switch(targetUnit) {
           case 'cups':
             // for an approximate result, multiply the volume value by 4.227
             this.answerValue = Math.round((inputValue * 4.227) * 10) / 10;
